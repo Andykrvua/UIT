@@ -4,7 +4,7 @@
   "description": "UIT landing page",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "gitAdd": "git add . && git commit -m \"auto\" && git push"
   },
   "author": "andrey.kallko@gmail.com",
   "license": "ISC",
