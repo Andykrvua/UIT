@@ -4,6 +4,7 @@ const sass = require("gulp-sass");
 const autoprefixer = require("autoprefixer");
 const cleanCSS = require("gulp-clean-css");
 const postcss = require("gulp-postcss");
+const del = require("del");
 
 const prod = "./build/";
 
@@ -64,6 +65,10 @@ gulp.task("watch", () => {
 });
 
 gulp.task("build", gulp.parallel("copy-html", "build-js", "build-sass"));
+
+gulp.task("clean", function() {
+  return del(["./build/"]);
+});
 
 gulp.task("prod", () => {
   gulp.src("./src/index.html").pipe(gulp.dest(prod));

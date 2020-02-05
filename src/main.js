@@ -1,5 +1,13 @@
-function testSuper() {
-  console.log("Ok");
-}
+import Headroom from "headroom.js";
 
-testSuper();
+const myElement = document.querySelector("header");
+
+var headroom = new Headroom(myElement, {
+  offset: 500,
+  classes: {
+    initial: "animated",
+    pinned: "slideDown",
+    unpinned: "slideUp"
+  }
+});
+headroom.init();
