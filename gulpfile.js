@@ -66,14 +66,14 @@ gulp.task("watch", () => {
 
 gulp.task("build", gulp.parallel("copy-html", "build-js", "build-sass"));
 
-gulp.task("clean", function() {
+gulp.task("clean-build", function() {
   return del(["./build/"]);
 });
 
-gulp.task("prod", () => {
+gulp.task("prod-build", () => {
   gulp.src("./src/index.html").pipe(gulp.dest(prod));
 
-  gulp.src("./img/**/.*").pipe(gulp.dest(prod + "/img"));
+  gulp.src("./img/**/*.*").pipe(gulp.dest(prod + "/img"));
 
   gulp
     .src("./src/main.js")
@@ -119,3 +119,5 @@ gulp.task("prod", () => {
 });
 
 gulp.task("default", gulp.parallel("watch", "build"));
+
+gulp.task("prod", gulp.series("clean-build", "prod-build"));

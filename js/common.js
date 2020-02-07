@@ -544,7 +544,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var headroom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! headroom.js */ "./node_modules/headroom.js/dist/headroom.js");
 /* harmony import */ var headroom_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(headroom_js__WEBPACK_IMPORTED_MODULE_0__);
 
-var myElement = document.querySelector("header");
+const myElement = document.querySelector("header");
 var headroom = new headroom_js__WEBPACK_IMPORTED_MODULE_0___default.a(myElement, {
   offset: 500,
   classes: {
