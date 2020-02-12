@@ -84,6 +84,10 @@ header .container {
 }
 
 .header-content-menu {
+  justify-content: space-between;
+}
+
+.header-content-menu {
   padding-bottom: 7px;
 }
 
@@ -136,6 +140,10 @@ nav ul {
   display: flex;
   justify-content: space-between;
   padding-left: 32px;
+}
+
+nav ul li {
+  padding-right: 15px;
 }
 
 nav a {
@@ -200,20 +208,20 @@ nav a {
 
 /* header breakpoints start */
 
-@media (max-width: 1000px) {
-  nav {
-    overflow: hidden;
-  }
-  nav ul {
-    justify-content: flex-start;
-  }
-  nav ul li {
-    margin-right: 10px;
-  }
-  nav ul::after {
-    content: "...";
-  }
-}
+// @media (max-width: 1000px) {
+//   nav {
+//     overflow: hidden;
+//   }
+//   nav ul {
+//     justify-content: flex-start;
+//   }
+//   nav ul li {
+//     margin-right: 10px;
+//   }
+//   nav ul::after {
+//     content: "...";
+//   }
+// }
 
 /* header breakpoints end */
 

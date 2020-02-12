@@ -361,6 +361,9 @@ header .container {
   justify-content: flex-end; }
 
 .header-content-menu {
+  justify-content: space-between; }
+
+.header-content-menu {
   padding-bottom: 7px; }
 
 .header-content-contacts {
@@ -407,6 +410,9 @@ nav ul {
   justify-content: space-between;
   padding-left: 32px; }
 
+nav ul li {
+  padding-right: 15px; }
+
 nav a {
   font-weight: 700;
   white-space: nowrap; }
@@ -450,16 +456,6 @@ nav a {
 
 /* header animation end */
 /* header breakpoints start */
-@media (max-width: 1000px) {
-  nav {
-    overflow: hidden; }
-  nav ul {
-    justify-content: flex-start; }
-  nav ul li {
-    margin-right: 10px; }
-  nav ul::after {
-    content: "..."; } }
-
 /* header breakpoints end */
 /* header end */
 /* --------------------------------------------------------------------------------- */
