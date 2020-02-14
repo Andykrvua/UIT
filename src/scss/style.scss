@@ -15,6 +15,22 @@ $light-green-color: #8bc53f;
   transition: 0.3s;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.responsive_img {
+  width: 100%;
+  height: auto;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   font-size: 1em;
@@ -25,19 +41,35 @@ body {
 .container {
   max-width: 1170px;
   margin: 0 auto;
-  padding: 0 15px;
+  // padding: 0 50px;
   // border: 1px solid green;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+@media (max-width: 1360px) {
+  .container {
+    width: 90%;
+  }
 }
 
 a {
   text-decoration: none;
   color: $base-font-color;
+}
+
+.btn {
+  border-radius: 4px;
+  background-color: $light-green-color;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 4px 5px rgba(0, 0, 0, 0.14);
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.125em;
+  color: #fff;
+  width: 330px;
+  text-transform: uppercase;
+  padding: 25px 0;
+  margin: 0 auto;
+  text-align: center;
 }
 
 /* common element end */
@@ -55,6 +87,7 @@ header {
   width: 100%;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
     0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
 }
 
 header .container {
@@ -79,7 +112,7 @@ header .container {
 .header-content-menu,
 .header-content-contacts {
   display: flex;
-  flex-basis: 100%;
+  width: 100%;
   justify-content: flex-end;
 }
 
@@ -130,6 +163,7 @@ header .container {
 .header-content-contacts a svg {
   position: absolute;
   left: -28px;
+  fill: #fff;
 }
 
 nav {
@@ -208,23 +242,135 @@ nav a {
 
 /* header breakpoints start */
 
-// @media (max-width: 1000px) {
-//   nav {
-//     overflow: hidden;
-//   }
-//   nav ul {
-//     justify-content: flex-start;
-//   }
-//   nav ul li {
-//     margin-right: 10px;
-//   }
-//   nav ul::after {
-//     content: "...";
-//   }
-// }
+@media (max-width: 1100px) {
+  nav {
+    display: none;
+  }
+
+  .header-logo {
+    margin-right: 0px;
+    height: 87px;
+  }
+
+  .header-logo svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .header-content-menu {
+    width: 35px;
+    order: 2;
+    justify-content: flex-end;
+    padding-bottom: 0;
+  }
+
+  .header-content-contacts {
+    width: calc(100% - 35px);
+    order: 1;
+    background-color: #fff;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    min-width: 200px;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .header-content-contacts a {
+    color: $base-font-color;
+    padding: 3px 0;
+  }
+
+  .header-content-contacts a svg {
+    fill: $base-font-color;
+  }
+
+  .header-content-contacts::before {
+    height: 0;
+    width: 0;
+  }
+
+  .header-content-contacts::after {
+    height: 0;
+    width: 0;
+  }
+
+  .header-content {
+    align-content: center;
+  }
+
+  .header-content-language {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content-contacts a {
+    padding: 2px 0;
+  }
+
+  .header-content {
+    flex-wrap: nowrap;
+  }
+}
 
 /* header breakpoints end */
 
 /* header end */
+
+/* --------------------------------------------------------------------------------- */
+
+/* main content start */
+
+/* first screen start */
+
+main {
+  padding-top: 87px;
+}
+
+.first-screen {
+  background-image: url(./../img/pattern_light.jpg);
+  overflow: hidden;
+}
+
+.first-screen .container {
+  display: flex;
+}
+
+.first-screen-content {
+  flex: 1;
+  padding: 270px 0;
+  position: relative;
+  background-image: url(./../img/first_screen.svg);
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+
+.first-screen-content h1 {
+  font-weight: 700;
+  font-size: 2.375em;
+  width: 555px;
+}
+
+.first-screen-button {
+  margin-top: 50px;
+}
+
+/* first screen breakpoints start */
+
+@media (max-width: 1100px) {
+  .first-screen-content {
+    background-size: contain;
+    padding: 135px 0;
+  }
+}
+
+/* first screen breakpoints end */
+
+/* first screen end */
+
+/* main content end */
 
 /* --------------------------------------------------------------------------------- */
