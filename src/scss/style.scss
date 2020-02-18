@@ -9,8 +9,8 @@ $dark-green-color: #75cd22;
 $light-green-color: #8bc53f;
 
 *,
-*::after,
-*::before {
+*:after,
+*:before {
   box-sizing: border-box;
   transition: 0.3s;
 }
@@ -26,7 +26,8 @@ ul {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   margin: 0;
   padding: 0;
 }
@@ -135,7 +136,7 @@ header .container {
   position: relative;
 }
 
-.header-content-contacts::after {
+.header-content-contacts:after {
   background-color: $dark-green-color;
   content: "";
   position: absolute;
@@ -290,12 +291,12 @@ nav a {
     fill: $base-font-color;
   }
 
-  .header-content-contacts::before {
+  .header-content-contacts:before {
     height: 0;
     width: 0;
   }
 
-  .header-content-contacts::after {
+  .header-content-contacts:after {
     height: 0;
     width: 0;
   }
@@ -422,7 +423,7 @@ section.cards {
   position: relative;
 }
 
-.cards-item::before {
+.cards-item:before {
   content: "";
   bottom: 0;
   right: 0;
@@ -433,7 +434,7 @@ section.cards {
   border-bottom-right-radius: 4px;
 }
 
-.cards-item::after {
+.cards-item:after {
   content: "";
   bottom: 12px;
   right: 10px;
@@ -503,15 +504,17 @@ section.cards {
 
 .what {
   margin-top: 150px;
+  overflow: hidden;
 }
 
 .what-content {
   display: flex;
   justify-content: space-between;
   position: relative;
+  margin-bottom: 83px;
 }
 
-.what-content::after {
+.what-content:after {
   content: "";
   position: absolute;
   top: 0;
@@ -519,7 +522,7 @@ section.cards {
   width: 50%;
   height: 100%;
   background-color: #f2fae9;
-  z-index: -1;
+  z-index: -2;
   // -moz-transform: skew(-17deg, 0deg);
   // -webkit-transform: skew(-17deg, 0deg);
   // -o-transform: skew(-17deg, 0deg);
@@ -527,11 +530,15 @@ section.cards {
   transform: skew(-17deg, 0deg) translateX(50%);
 }
 
-.what-content-title {
+.what-content-wrapper {
   display: flex;
+  max-width: 500px;
+  position: relative;
+}
+
+h2.what-content-title {
   font-size: 2.375em;
   font-weight: 700;
-  max-width: 500px;
 }
 
 .what-content-description {
@@ -544,15 +551,250 @@ section.cards {
 
 .what-img-wrapper {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: -17px;
+  right: 0;
   transform: skew(-17deg, 0deg);
-  width: 50%;
-  max-height: 500px;
-  border: 1px solid red;
+  width: 365px;
+  height: 197px;
+  z-index: -1;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 4px 5px rgba(0, 0, 0, 0.14);
+  background-color: #fbfbfb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.what-img-wrapper img {
+  transform: skew(17deg, 0deg);
+}
+
+/* what breakpoints start */
+
+@media (max-width: 1100px) {
+  .what-content {
+    flex-direction: column;
+  }
+
+  .what-content-description {
+    padding-left: 0;
+    padding-top: 35px;
+    max-width: 500px;
+  }
+
+  .what-content-wrapper {
+    max-width: 100%;
+    position: initial;
+  }
+
+  .what-content:after {
+    left: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .what-img-wrapper {
+    opacity: 0.6;
+    right: 10px;
+  }
+
+  .what-content:after {
+    left: -30%;
+    width: 80%;
+  }
+}
+
+@media (max-width: 540px) {
+  .what-img-wrapper {
+    opacity: 0.3;
+    box-shadow: none;
+  }
+}
+
+/* what breakpoints end */
+
 /* what end */
+
+/* numbers start */
+
+section.numbers {
+  background-color: $light-green-color;
+  margin-top: 67px;
+  padding: 50px 0 25px;
+}
+
+.numbers-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.numbers-item {
+  display: flex;
+  color: #575988;
+  font-size: 4em;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.numbers-item p {
+  display: flex;
+  align-self: center;
+  padding-left: 20px;
+  color: #fff;
+  font-size: 0.25em;
+  text-transform: uppercase;
+}
+
+/* numbers breakpoints start */
+
+@media (max-width: 1100px) {
+  .numbers-wrapper {
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  section.numbers .container {
+    display: flex;
+  }
+}
+
+@media (max-width: 800px) {
+  section.numbers .container {
+    display: block;
+  }
+
+  .numbers-wrapper {
+    width: 100%;
+  }
+}
+
+@media (max-width: 540px) {
+  .numbers-wrapper {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 380px) {
+  .numbers-item {
+    flex-wrap: wrap;
+  }
+  .numbers-item p {
+    width: 100%;
+    padding-left: 0;
+  }
+}
+
+/* numbers breakpoints end */
+
+/* faq start */
+
+section.faq {
+  padding: 150px 0;
+}
+
+h3.faq-heading {
+  font-weight: 700;
+  font-size: 2.375em;
+  padding-bottom: 50px;
+}
+
+.accordion {
+  max-width: 50%;
+}
+
+.faq-item {
+  padding-bottom: 15px;
+}
+
+[id*="open-accordion"],
+[id*="close-accordion"] {
+  background: #fff;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 4px 5px rgba(0, 0, 0, 0.14);
+  border-radius: 4px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  width: 99%;
+}
+
+[id*="close-accordion"] {
+  display: none;
+}
+
+.accordion a {
+  font-weight: 700;
+  z-index: 1;
+  padding: 16px 53px;
+}
+
+.accordion a:before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 19px;
+  background-image: url(./../img/bullet.svg);
+}
+
+[id*="open-accordion"]:after,
+[id*="close-accordion"]:after {
+  content: "";
+  position: absolute;
+  width: 19px;
+  height: 18px;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  background-image: url(./../img/plus.svg);
+  transition: all 0.5s ease;
+}
+
+.target-fix {
+  display: block;
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+
+.accordion-content {
+  color: #fff;
+  height: 0;
+  margin: -1px auto 0;
+  position: relative;
+  overflow: hidden;
+  width: 90%;
+  transition: all 0.3s ease;
+}
+
+.accordion span:target ~ .accordion-content {
+  display: block;
+  height: auto;
+  padding: 25px;
+  z-index: -1;
+  background-color: $light-green-color;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.accordion span:target ~ [id*="close-accordion"] {
+  display: block;
+}
+
+.accordion span:target ~ [id*="open-accordion"] {
+  display: none;
+}
+
+.accordion span:target ~ [id*="close-accordion"]:after {
+  background-image: url(./../img/minus.svg);
+  height: 4px;
+}
+
+/* faq end */
+
+/* numbers end */
 
 /* main content end */
 
