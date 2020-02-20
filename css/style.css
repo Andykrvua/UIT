@@ -1477,6 +1477,13 @@ section.myth {
   background-clip: text;
   -webkit-text-fill-color: transparent; }
 
+.myth-btn-wrapper {
+  width: 100%;
+  text-align: center; }
+
+.myth-btn {
+  margin: 25px auto 50px; }
+
 /* myth end */
 /* price start */
 .price .heading {
@@ -1500,6 +1507,9 @@ section.myth {
   border-radius: 4px;
   text-align: center;
   position: relative; }
+
+.price-item-wrapper:nth-child(2) .price-item {
+  background: #f2fae9; }
 
 .price-item-title {
   font-weight: 700;
@@ -1612,7 +1622,6 @@ section.myth {
 
 .swiper-slide {
   text-align: center;
-  font-size: 18px;
   background: #fff;
   /* Center slide text vertically */
   display: -webkit-box;
@@ -1632,6 +1641,28 @@ section.myth {
 /* slider end */
 .swiper-slide {
   border: 1px solid green; }
+
+.review-item-wrapper {
+  position: relative; }
+
+.review-item-text {
+  width: 570px;
+  height: 230px;
+  border: 1px solid #75cd22;
+  border-radius: 15px;
+  background-color: #fbfbfb;
+  position: relative;
+  padding: 30px 55px;
+  text-align: left; }
+
+.review-item-text:after {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  right: 50px;
+  width: 55px;
+  height: 40px;
+  background-image: url(./../img/review-helper.svg); }
 
 /* review end */
 /* main content end */

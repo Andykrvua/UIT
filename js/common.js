@@ -9790,6 +9790,11 @@ var swiper = new swiper__WEBPACK_IMPORTED_MODULE_1__["default"](".swiper-contain
   slidesPerView: "auto",
   centeredSlides: true,
   spaceBetween: 30,
+  loop: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev"
+  },
   pagination: {
     el: ".swiper-pagination",
     clickable: true
