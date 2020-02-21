@@ -838,13 +838,9 @@ body {
   max-width: 1170px;
   margin: 0 auto; }
 
-@media (max-width: 1360px) {
-  .container {
-    width: 90%; } }
-
-a {
-  text-decoration: none;
-  color: #666; }
+.heading {
+  font-weight: 700;
+  font-size: 2.375em; }
 
 .btn {
   border-radius: 4px;
@@ -861,9 +857,25 @@ a {
   margin: 0 auto;
   text-align: center; }
 
-.heading {
-  font-weight: 700;
-  font-size: 2.375em; }
+@media (max-width: 1360px) {
+  .container {
+    width: 90%; } }
+
+@media (max-width: 540px) {
+  .heading {
+    font-size: 1.75em; } }
+
+@media (max-width: 380px) {
+  .btn {
+    font-weight: 700;
+    font-size: 1.125em;
+    width: 280px;
+    padding: 25px 0;
+    margin: 0 auto; } }
+
+a {
+  text-decoration: none;
+  color: #666; }
 
 /* common element end */
 /* --------------------------------------------------------------------------------- */
@@ -1075,15 +1087,20 @@ main {
 /* first screen breakpoints start */
 @media (max-width: 1100px) {
   .first-screen-content {
-    background-size: contain; } }
+    background-size: 75%; } }
 
 @media (max-width: 800px) {
   .first-screen-content {
-    padding: 200px 0; } }
+    padding: 200px 0;
+    background-size: 50%; } }
 
 @media (max-width: 540px) {
   .first-screen-content {
-    padding: 135px 0; } }
+    padding: 135px 0;
+    background: none; }
+  .first-screen-button {
+    margin-left: 50%;
+    transform: translateX(-50%); } }
 
 /* first screen breakpoints end */
 /* first screen end */
@@ -1573,11 +1590,17 @@ section.myth {
     margin-left: 0;
     margin-right: 0; } }
 
+@media (max-width: 540px) {
+  .price-item button {
+    width: 280px; } }
+
 @media (max-width: 380px) {
   .price-item-title {
     padding: 75px 25px 50px; }
   .price-item-description {
-    padding: 50px 25px 150px; } }
+    padding: 50px 25px 150px; }
+  .price-item button {
+    width: 250px; } }
 
 /* price breakpoints end */
 /* price end */
@@ -1775,7 +1798,7 @@ section.myth {
   .review-item-text:after {
     right: 35px; } }
 
-/* review breakpoints start */
+/* review breakpoints end */
 /* review end */
 /* main content end */
 /* --------------------------------------------------------------------------------- */
@@ -1803,7 +1826,7 @@ section.form {
   padding-bottom: 75px; }
 
 .form-fields {
-  width: 370px;
+  max-width: 370px;
   margin-right: 25px;
   position: relative; }
 
@@ -1814,7 +1837,7 @@ section.form {
   border: none;
   margin-bottom: 25px;
   padding: 15px;
-  width: 370px; }
+  width: 100%; }
 
 .form-fields input:last-child {
   margin-bottom: 0; }
@@ -1831,10 +1854,13 @@ section.form {
 .form-options button {
   margin-bottom: 25px;
   margin-right: 25px;
-  margin-left: 25px; }
+  margin-left: 25px;
+  width: 100%;
+  max-width: 330px; }
 
 .form-options button:nth-child(even) {
-  margin-right: 0px; }
+  margin-right: 0px;
+  margin-left: 0; }
 
 section.form:before {
   content: "";
@@ -1846,5 +1872,159 @@ section.form:before {
   background-color: #2f2e41;
   transform: skew(-17deg, 0deg); }
 
+/* form breakpoints start */
+@media (max-width: 1100px) {
+  .form-wrapper {
+    flex-direction: column; }
+  .form-fields {
+    max-width: 100%;
+    margin-right: 0; }
+  .form-fields form {
+    display: flex; }
+  .form-fields input {
+    margin-right: 25px; }
+  .form-fields input:last-child {
+    margin-right: 0; }
+  .form-fields form:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -25px;
+    width: 0;
+    height: 0;
+    background-color: #fff; }
+  .form-options {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -25px; }
+  .form-options button {
+    margin-bottom: 25px;
+    margin-right: 25px;
+    margin-left: 0;
+    max-width: 330px;
+    flex: 1;
+    padding: 25px 15px; }
+  .form-options button:nth-child(even) {
+    margin-right: 25px; }
+  section.form:before {
+    left: 15%;
+    width: 500px; } }
+
+@media (max-width: 800px) {
+  section.form:before {
+    left: 20%;
+    width: 350px; } }
+
+@media (max-width: 540px) {
+  .form-fields form {
+    flex-wrap: wrap; }
+  .form-fields input {
+    margin-right: 0; }
+  .form-fields input:last-child {
+    margin-bottom: 25px; }
+  section.form:before {
+    left: 0;
+    width: 250px; } }
+
+/* form breakpoints end */
 /* form end */
+/* --------------------------------------------------------------------------------- */
+/* footer start */
+footer {
+  background-color: #2f2e41; }
+
+footer .container {
+  display: flex; }
+
+.footer-logo {
+  padding: 20px 0 17px;
+  flex-basis: 25%; }
+
+.footer-contacts {
+  display: flex;
+  flex-basis: 25%;
+  padding: 30px 0; }
+
+.footer-contacts-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+
+.footer-contacts-content a,
+.footer-about p {
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.875em;
+  position: relative; }
+
+.footer-contacts-content a {
+  padding-left: 28px; }
+
+.footer-contacts-content a svg {
+  position: absolute;
+  left: 0;
+  fill: #fff; }
+
+.footer-about p:first-child {
+  font-weight: 400; }
+
+.footer-about p:last-child {
+  padding-top: 5px; }
+
+.footer-about {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 0; }
+
+.fb-icon {
+  max-width: 20px;
+  width: auto;
+  height: auto;
+  margin-left: 5px;
+  vertical-align: middle; }
+
+/* footer breakpoints start */
+@media (max-width: 1100px) {
+  footer .container {
+    flex-wrap: wrap; }
+  .footer-logo {
+    flex-basis: 30%; }
+  .footer-contacts {
+    flex-basis: 70%;
+    padding-left: 30px; }
+  .footer-about {
+    flex-basis: 100%;
+    padding: 0 0 30px; }
+  .footer-about p:first-child {
+    padding-bottom: 10px; } }
+
+@media (max-width: 800px) {
+  .footer-logo {
+    flex-basis: 50%; }
+  .footer-contacts {
+    flex-basis: 50%;
+    padding-left: 0; }
+  .footer-about {
+    flex-basis: 100%;
+    padding: 0 0 30px; }
+  .footer-about p:first-child {
+    padding-bottom: 10px; } }
+
+@media (max-width: 540px) {
+  .footer-logo {
+    flex-basis: 100%; }
+  .footer-contacts {
+    flex-basis: 100%;
+    padding-top: 0; }
+  .footer-contacts-content a {
+    padding-top: 10px; }
+  .footer-about {
+    flex-basis: 100%;
+    padding: 0 0 30px; }
+  .footer-about p:first-child {
+    padding-bottom: 10px; } }
+
+/* footer end */
 /* --------------------------------------------------------------------------------- */
