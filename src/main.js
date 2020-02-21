@@ -26,16 +26,26 @@ for (i = 0; i < acc.length; i++) {
 
 // review slider
 var swiper = new Swiper(".swiper-container", {
-  slidesPerView: "auto",
+  // slidesPerView: "auto",
   centeredSlides: true,
-  spaceBetween: 30,
+  spaceBetween: 65,
   loop: true,
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev"
+    nextEl: ".swiper-next",
+    prevEl: ".swiper-prev"
   },
   pagination: {
     el: ".swiper-pagination",
     clickable: true
+  },
+  breakpoints: {
+    800: {
+      slidesPerView: 1
+    }
+  },
+  breakpoints: {
+    801: {
+      slidesPerView: "auto"
+    }
   }
 });

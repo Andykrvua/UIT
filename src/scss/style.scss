@@ -393,6 +393,8 @@ main {
 
 /* first screen end */
 
+/* --------------------------------------------------------------------------------- */
+
 /* cards start */
 
 section.cards {
@@ -505,6 +507,8 @@ section.cards {
 
 /* cards end */
 
+/* --------------------------------------------------------------------------------- */
+
 /* what start */
 
 .what {
@@ -614,6 +618,8 @@ section.cards {
 
 /* what end */
 
+/* --------------------------------------------------------------------------------- */
+
 /* numbers start */
 
 section.numbers {
@@ -687,6 +693,8 @@ section.numbers {
 /* numbers breakpoints end */
 
 /* numbers end */
+
+/* --------------------------------------------------------------------------------- */
 
 /* faq start */
 
@@ -815,6 +823,8 @@ h3.faq-heading {
 
 /* faq end */
 
+/* --------------------------------------------------------------------------------- */
+
 /* myth start */
 
 section.myth {
@@ -906,6 +916,8 @@ section.myth {
 }
 
 /* myth end */
+
+/* --------------------------------------------------------------------------------- */
 
 /* price start */
 
@@ -1026,6 +1038,8 @@ section.myth {
 
 /* price end */
 
+/* --------------------------------------------------------------------------------- */
+
 /* products start */
 
 .products-wrapper {
@@ -1033,7 +1047,7 @@ section.myth {
   flex-wrap: wrap;
   margin-left: -8px;
   margin-right: -8px;
-  padding: 50px 0 100px;
+  padding-top: 50px;
 }
 
 .products-item {
@@ -1060,6 +1074,15 @@ section.myth {
   height: auto;
 }
 
+.products-btn-wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.products-btn {
+  margin: 0 auto 150px;
+}
+
 /* products breakpoints start */
 
 @media (max-width: 800px) {
@@ -1078,13 +1101,16 @@ section.myth {
 
 /* products end */
 
+/* --------------------------------------------------------------------------------- */
+
 /* review start */
 
 /* slider start */
 
 .swiper-container {
   width: 100%;
-  height: 500px;
+  margin-top: 50px;
+  height: 100%;
 }
 .swiper-slide {
   text-align: center;
@@ -1105,32 +1131,54 @@ section.myth {
   align-items: center;
   width: 60%;
 }
-// .swiper-slide:nth-child(2n) {
-//   width: 40%;
-// }
-// .swiper-slide:nth-child(3n) {
-//   width: 20%;
-// }
+
+.swiper-next,
+.swiper-prev {
+  position: absolute;
+  top: 50%;
+  width: calc(var(--swiper-navigation-size) / 44 * 27);
+  height: var(--swiper-navigation-size);
+  margin-top: calc(-1 * var(--swiper-navigation-size) / 2);
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper-prev {
+  left: 15%;
+  right: auto;
+}
+
+.swiper-next {
+  right: 15%;
+  left: auto;
+}
 
 /* slider end */
 
 .swiper-slide {
-  border: 1px solid green;
+  // border: 1px solid green;
 }
 
 .review-item-wrapper {
   position: relative;
+  max-width: 570px;
+  padding: 1px;
 }
 
 .review-item-text {
-  width: 570px;
-  height: 230px;
+  min-height: 230px;
   border: 1px solid $dark-green-color;
   border-radius: 15px;
   background-color: #fbfbfb;
   position: relative;
+  line-height: 1.375em;
   padding: 30px 55px;
   text-align: left;
+  display: flex;
+  align-items: center;
 }
 
 .review-item-text:after {
@@ -1143,8 +1191,207 @@ section.myth {
   background-image: url(./../img/review-helper.svg);
 }
 
+.review-item-autor {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-item-author-name {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 0px 25px 55px;
+  min-height: 130px;
+  justify-content: center;
+  width: 60%;
+}
+
+.review-item-author-name span {
+  text-align: left;
+}
+
+.review-item-author-name span:first-child {
+  font-weight: 700;
+  padding-bottom: 5px;
+}
+
+.review-item-avatar {
+  display: flex;
+  width: 215px;
+  align-items: center;
+}
+
+.review-item-avatar img {
+  width: 100px;
+  height: 100px;
+}
+
+.swiper-pagination {
+  display: none;
+}
+
+/* review breakpoints start */
+
+@media (max-width: 1100px) {
+  .review-item-avatar {
+    display: none;
+  }
+  .review-item-author-name {
+    min-height: unset;
+    width: 100%;
+    padding: 25px 55px;
+  }
+  .swiper-prev {
+    left: 14%;
+    right: auto;
+  }
+
+  .swiper-next {
+    right: 14%;
+    left: auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .review-item-text {
+    padding: 30px;
+  }
+
+  .review-item-author-name {
+    padding: 25px 30px 35px;
+  }
+
+  .swiper-prev {
+    display: none;
+  }
+
+  .swiper-next {
+    display: none;
+  }
+
+  .swiper-pagination {
+    display: block;
+  }
+
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: $dark-green-color;
+  }
+
+  .swiper-container-horizontal
+    > .swiper-pagination-bullets
+    .swiper-pagination-bullet {
+    margin: 0 8px;
+  }
+
+  .review-item-text {
+    min-height: unset;
+  }
+
+  .review-item-wrapper {
+    max-width: unset;
+  }
+}
+
+@media (max-width: 380px) {
+  .review-item-text:after {
+    right: 35px;
+  }
+}
+
+/* review breakpoints start */
+
 /* review end */
 
 /* main content end */
+
+/* --------------------------------------------------------------------------------- */
+
+/* form start */
+
+section.form {
+  margin-top: 150px;
+  padding-top: 50px;
+  background: linear-gradient(
+    180deg,
+    #545683 0%,
+    rgba(84, 86, 131, 0.95) 47.4%,
+    #545683 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.form-img-wrapper {
+  background-image: url(./../img/form-block.svg);
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: contain;
+  position: relative;
+}
+
+.form h3 {
+  color: #fff;
+  padding-bottom: 50px;
+}
+
+.form-wrapper {
+  display: flex;
+  padding-bottom: 75px;
+}
+
+.form-fields {
+  width: 370px;
+  margin-right: 25px;
+  position: relative;
+}
+
+.form-fields input {
+  height: 70px;
+  box-shadow: inset 0px 2px 4px rgba(84, 86, 131, 0.3),
+    inset 0px 1px 10px rgba(84, 86, 131, 0.12),
+    inset 0px 4px 5px rgba(84, 86, 131, 0.14);
+  border-radius: 4px;
+  border: none;
+  margin-bottom: 25px;
+  padding: 15px;
+  width: 370px;
+}
+
+.form-fields input:last-child {
+  margin-bottom: 0;
+}
+
+.form-fields form:after {
+  content: "";
+  position: absolute;
+  right: -25px;
+  top: 0;
+  width: 1px;
+  height: calc(100% - 25px);
+  background-color: #fff;
+}
+
+.form-options button {
+  margin-bottom: 25px;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+.form-options button:nth-child(even) {
+  margin-right: 0px;
+}
+
+section.form:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 600px;
+  height: 100%;
+  background-color: #2f2e41;
+  transform: skew(-17deg, 0deg);
+}
+
+/* form end */
 
 /* --------------------------------------------------------------------------------- */
