@@ -72,6 +72,27 @@ body {
   text-align: center;
 }
 
+.btn:hover {
+  background-color: #555981;
+  border: none;
+  color: #fff;
+}
+
+.btn:active {
+  box-shadow: none;
+  outline: none;
+}
+
+::placeholder {
+  color: #a7a7a7;
+  font-size: 1.125em;
+}
+
+input {
+  font-size: 1.125em;
+  color: $base-font-color;
+}
+
 @media (max-width: 1360px) {
   .container {
     width: 90%;
@@ -568,10 +589,15 @@ section.cards {
 
 .what-content-description {
   display: flex;
+  flex-direction: column;
   flex: 1;
   padding: 70px 0 50px 90px;
   font-size: 1.125em;
   line-height: 1.313em;
+}
+
+.what-content-description span {
+  padding-bottom: 5px;
 }
 
 .what-img-wrapper {
@@ -902,11 +928,11 @@ section.myth {
   color: #575988;
 }
 
-.myth-item-content-title span {
-  color: #9f9f9f;
-  text-decoration: line-through;
-  padding-right: 10px;
-}
+// .myth-item-content-title span {
+//   color: #9f9f9f;
+//   text-decoration: line-through;
+//   padding-right: 10px;
+// }
 
 .myth-item-content-description {
   margin-bottom: 28px;
@@ -1246,7 +1272,8 @@ section.myth {
 }
 
 .review-item-avatar {
-  display: flex;
+  // display: flex;
+  display: none;
   width: 215px;
   align-items: center;
 }
@@ -1312,6 +1339,12 @@ section.myth {
     > .swiper-pagination-bullets
     .swiper-pagination-bullet {
     margin: 0 8px;
+  }
+
+  .swiper-container-horizontal > .swiper-pagination-bullets,
+  .swiper-pagination-custom,
+  .swiper-pagination-fraction {
+    bottom: 0px;
   }
 
   .review-item-text {
@@ -1530,6 +1563,11 @@ section.form:before {
   section.form:before {
     left: 0;
     width: 250px;
+  }
+
+  .form-options button {
+    flex-basis: 100%;
+    max-width: 100%;
   }
 }
 
