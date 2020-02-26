@@ -400,6 +400,14 @@ main {
   max-width: 555px;
 }
 
+.first-screen-content span {
+  display: block;
+  font-size: 1.5em;
+  max-width: 555px;
+  font-weight: 400;
+  padding-top: 50px;
+}
+
 .first-screen-button {
   margin-top: 50px;
 }
@@ -598,6 +606,10 @@ section.cards {
 
 .what-content-description span {
   padding-bottom: 5px;
+}
+
+.what-content-description span:nth-child(even) {
+  color: $dark-green-color;
 }
 
 .what-img-wrapper {
@@ -945,6 +957,14 @@ section.myth {
   -webkit-text-fill-color: transparent;
 }
 
+.myth-item-content-description span {
+  display: block;
+}
+
+.myth-item-content-description span:first-child {
+  padding-top: 10px;
+}
+
 .myth-item.active .myth-item-content-description {
   height: 100%;
   background: linear-gradient(180deg, #666, #666);
@@ -1272,8 +1292,8 @@ section.myth {
 }
 
 .review-item-avatar {
-  // display: flex;
-  display: none;
+  display: flex;
+  // display: none;
   width: 215px;
   align-items: center;
 }
