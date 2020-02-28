@@ -12716,22 +12716,45 @@ i_send.addEventListener("click", e => {
   let i_mail = document.querySelector(".i_mail").value;
   let i_btn = i_send.textContent;
 
-  if (i_name === "" && i_phone === "" && !validateEmail(i_mail)) {
-    i_name === "" ? console.log("Введите имя") : null;
-    i_phone === "" ? console.log("Укажите телефон или почту") : null; // if (i_phone === "" || i_mail === "") {
+  if (i_name === "" || i_phone === "" || !validateEmail(i_mail)) {
+    let str = "";
+    i_name === "" ? str = "Введите имя" : null;
 
-    validateEmail(i_mail) ? null : console.log("Неправильный адрес почты "); // } else {
-    // console.log("Укажите телефон или почту");
-    // }
+    if (i_phone === "" && i_mail === "") {
+      str += "Укажите телефон или почту";
+    } else if (i_phone === "") {
+      // проверка почты
+      // i_mail === "" ? console.log("2Укажите телефон или почту") : null;
+      validateEmail(i_mail) ? sendMail() : str += "Неправильный адрес почты";
+    } else {
+      // проверка телефона
+      // i_phone === "" ? console.log("1Укажите телефон или почту") : null;
+      if (i_mail !== "") {
+        validateEmail(i_mail) ? sendMail() : str += "Неправильный адрес почты";
+      }
+
+      sendMail();
+    }
+
+    showValidation(str);
   } else {
-    const params = "name=" + i_name + "&phone=" + i_phone + "&mail=" + i_mail + "&btn=" + i_btn;
-    request.send(params); // console.log(t1);
-
-    document.querySelector(".i_name").value = "";
-    document.querySelector(".i_phone").value = "";
-    document.querySelector(".i_mail").value = "";
+    sendMail();
   }
-}); // email validate
+});
+
+function sendMail() {
+  let i_name = document.querySelector(".i_name").value;
+  let i_phone = document.querySelector(".i_phone").value;
+  let i_mail = document.querySelector(".i_mail").value;
+  let i_btn = i_send.textContent;
+  const params = "name=" + i_name + "&phone=" + i_phone + "&mail=" + i_mail + "&btn=" + i_btn;
+  request.send(params); // console.log(t1);
+
+  document.querySelector(".i_name").value = "";
+  document.querySelector(".i_phone").value = "";
+  document.querySelector(".i_mail").value = "";
+} // email validate
+
 
 function validateEmail(mail) {
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
@@ -12744,7 +12767,15 @@ function validateEmail(mail) {
 
 
 function showValidation(str) {
-  document.querySelector(".validate").textContent = str;
+  if (str !== "") {
+    let elem = document.querySelector(".validate");
+    elem.textContent = str;
+    elem.classList.add("active");
+    setTimeout(() => {
+      elem.classList.remove("active");
+      elem.textContent = "";
+    }, 2000);
+  }
 }
 
 /***/ })
