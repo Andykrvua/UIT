@@ -840,7 +840,8 @@ body {
 
 .heading {
   font-weight: 700;
-  font-size: 2.375em; }
+  font-size: 2.375em;
+  text-align: center; }
 
 .btn {
   border-radius: 4px;
@@ -1096,7 +1097,8 @@ main {
   background-position: center right; }
 
 .first-screen-content h1 {
-  max-width: 555px; }
+  max-width: 555px;
+  text-align: left; }
 
 .first-screen-content span {
   display: block;
@@ -1243,7 +1245,8 @@ section.cards {
   position: relative; }
 
 .what-content-wrapper .heading {
-  padding-bottom: 250px; }
+  padding-bottom: 250px;
+  text-align: left; }
 
 .what-content-description {
   display: flex;
@@ -1866,7 +1869,8 @@ section.form {
 
 .form h3 {
   color: #fff;
-  padding-bottom: 50px; }
+  padding-bottom: 50px;
+  text-align: left; }
 
 .form-wrapper {
   display: flex;

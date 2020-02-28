@@ -54,6 +54,7 @@ body {
 .heading {
   font-weight: 700;
   font-size: 2.375em;
+  text-align: center;
 }
 
 .btn {
@@ -398,6 +399,7 @@ main {
 
 .first-screen-content h1 {
   max-width: 555px;
+  text-align: left;
 }
 
 .first-screen-content span {
@@ -597,6 +599,7 @@ section.cards {
 
 .what-content-wrapper .heading {
   padding-bottom: 250px;
+  text-align: left;
 }
 
 .what-content-description {
@@ -1252,9 +1255,9 @@ section.myth {
 
 /* slider end */
 
-.swiper-slide {
-  // border: 1px solid green;
-}
+// .swiper-slide {
+//   border: 1px solid green;
+// }
 
 .review-item-wrapper {
   position: relative;
@@ -1433,6 +1436,7 @@ section.form {
 .form h3 {
   color: #fff;
   padding-bottom: 50px;
+  text-align: left;
 }
 
 .form-wrapper {
