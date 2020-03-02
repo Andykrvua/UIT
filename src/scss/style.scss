@@ -1760,7 +1760,13 @@ footer .container {
 
 /* --------------------------------------------------------------------------------- */
 
+/* form validation start */
+
 .validate {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .validate.active {
@@ -1768,9 +1774,27 @@ footer .container {
   top: 50px;
   left: 50%;
   transform: translateX(-50%);
-  color: #fff;
-  width: 500px;
-  height: 100px;
+  width: 100%;
+  max-width: 500px;
+  min-width: 250px;
   background-color: #000;
   z-index: 1000;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 4px 5px rgba(0, 0, 0, 0.14);
+  border-radius: 4px;
+  border: 3px solid #7b728f;
+  padding: 25px;
+  background-color: #fff;
+  color: #666;
 }
+
+.validate.active span {
+  display: block;
+}
+
+@media (max-width: 580px) {
+  .validate.active {
+    top: 0;
+  }
+}
+
+/* form validation end */

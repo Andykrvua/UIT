@@ -126,61 +126,90 @@ for (let j = 0; j < acc2.length; ++j) {
 // inputmask
 Inputmask().mask(document.querySelector(".i_phone"));
 
-// send form
-const request = new XMLHttpRequest();
-const url = "ajax_quest.php";
+// validate form run
+let buttons = document.querySelectorAll(".form-options .btn");
 
-request.open("POST", url, true);
+for (let m = 0; m < buttons.length; m++) {
+  buttons[m].addEventListener("click", validate, true);
+}
 
-request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-request.addEventListener("readystatechange", () => {
-  if (request.readyState === 4 && request.status === 200) {
-    console.log(request.responseText);
-  }
-});
-
-let i_send = document.querySelector(".order_cost");
-i_send.addEventListener("click", e => {
+// validation form
+function validate(e) {
   e.preventDefault();
 
   let i_name = document.querySelector(".i_name").value;
   let i_phone = document.querySelector(".i_phone").value;
   let i_mail = document.querySelector(".i_mail").value;
-  let i_btn = i_send.textContent;
+  let i_btn = this.textContent;
 
-  if (i_name === "" || i_phone === "" || !validateEmail(i_mail)) {
-    let str = "";
+  let str = [];
 
-    i_name === "" ? (str = "Введите имя") : null;
-
-    if (i_phone === "" && i_mail === "") {
-      str += "Укажите телефон или почту";
-    } else if (i_phone === "") {
-      // проверка почты
-      // i_mail === "" ? console.log("2Укажите телефон или почту") : null;
-      validateEmail(i_mail) ? sendMail() : (str += "Неправильный адрес почты");
-    } else {
-      // проверка телефона
-      // i_phone === "" ? console.log("1Укажите телефон или почту") : null;
-      if (i_mail !== "") {
-        validateEmail(i_mail)
-          ? sendMail()
-          : (str += "Неправильный адрес почты");
-      }
-      sendMail();
-    }
-    showValidation(str);
-  } else {
-    sendMail();
+  if (i_name === "") {
+    str.push("Введите имя");
   }
-});
 
-function sendMail() {
-  let i_name = document.querySelector(".i_name").value;
-  let i_phone = document.querySelector(".i_phone").value;
-  let i_mail = document.querySelector(".i_mail").value;
-  let i_btn = i_send.textContent;
+  if (i_phone === "" && !validateEmail(i_mail)) {
+    str.push("Укажите телефон или почту");
+
+    if (i_mail !== "" && !validateEmail(i_mail)) {
+      str.push("Неправильный адрес почты");
+    }
+  }
+
+  if (i_phone !== "" && i_mail !== "") {
+    validateEmail(i_mail) ? null : str.push("Неправильный адрес почты");
+  }
+
+  if (i_phone !== "" && i_phone.toString().slice(-1) === "_") {
+    str.push("Неправильный номер телефона");
+  }
+
+  if (!str.length) {
+    sendMail(i_name, i_phone, i_mail, i_btn);
+  } else {
+    showValidation(str);
+  }
+}
+
+// email validate
+function validateEmail(mail) {
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+    return true;
+  }
+  return false;
+}
+
+// show validation
+function showValidation(str) {
+  if (str !== "") {
+    let elem = document.querySelector(".validate");
+
+    str.forEach(element => {
+      elem.innerHTML += `<span>${element}</span>`;
+    });
+
+    elem.classList.add("active");
+    setTimeout(() => {
+      elem.classList.remove("active");
+      elem.innerHTML = "";
+    }, 2000);
+  }
+}
+
+// send form
+function sendMail(i_name, i_phone, i_mail, i_btn) {
+  const request = new XMLHttpRequest();
+  const url = "./mailsender/mailsend.php";
+
+  request.open("POST", url, true);
+
+  request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  request.addEventListener("readystatechange", () => {
+    if (request.readyState === 4 && request.status === 200) {
+      console.log(request.responseText);
+    }
+  });
 
   const params =
     "name=" +
@@ -193,30 +222,8 @@ function sendMail() {
     i_btn;
 
   request.send(params);
-  // console.log(t1);
+
   document.querySelector(".i_name").value = "";
   document.querySelector(".i_phone").value = "";
   document.querySelector(".i_mail").value = "";
-}
-
-// email validate
-function validateEmail(mail) {
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
-    return true;
-  }
-  // alert("You have entered an invalid email address!");
-  return false;
-}
-
-// show validation
-function showValidation(str) {
-  if (str !== "") {
-    let elem = document.querySelector(".validate");
-    elem.textContent = str;
-    elem.classList.add("active");
-    setTimeout(() => {
-      elem.classList.remove("active");
-      elem.textContent = "";
-    }, 2000);
-  }
 }
