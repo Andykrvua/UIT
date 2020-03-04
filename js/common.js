@@ -13303,26 +13303,35 @@ function validate(e) {
   let i_phone = document.querySelector(".i_phone").value;
   let i_mail = document.querySelector(".i_mail").value;
   let i_btn = this.textContent;
-  let str = [];
+  let str = []; //lang
+
+  let querylang = document.querySelector("html").getAttribute("lang");
+  let lang;
+
+  if (querylang === "ru") {
+    lang = false;
+  } else {
+    lang = true;
+  }
 
   if (i_name === "") {
-    str.push("Введите имя");
+    lang ? str.push("Введіть ім'я") : str.push("Введите имя");
   }
 
   if (i_phone === "" && !validateEmail(i_mail)) {
-    str.push("Укажите телефон или почту");
+    lang ? str.push("Вкажіть телефон або пошту") : str.push("Укажите телефон или почту");
 
     if (i_mail !== "" && !validateEmail(i_mail)) {
-      str.push("Неправильный адрес почты");
+      lang ? str.push("Невірна поштова адреса") : str.push("Неправильный адрес почты");
     }
   }
 
   if (i_phone !== "" && i_mail !== "") {
-    validateEmail(i_mail) ? null : str.push("Неправильный адрес почты");
+    validateEmail(i_mail) ? null : lang ? str.push("Невірна поштова адреса") : str.push("Неправильный адрес почты");
   }
 
   if (i_phone !== "" && i_phone.toString().slice(-1) === "_") {
-    str.push("Неправильный номер телефона");
+    lang ? str.push("Невірний номер телефону") : str.push("Неправильный номер телефона");
   }
 
   if (!str.length) {
@@ -13344,6 +13353,12 @@ function validateEmail(mail) {
 
 function showValidation(str) {
   if (str !== "") {
+    let buttons = document.querySelectorAll(".form-options .btn");
+
+    for (let n = 0; n < buttons.length; n++) {
+      buttons[n].disabled = true;
+    }
+
     let elem = document.querySelector(".validate");
     str.forEach(element => {
       elem.innerHTML += "<span>".concat(element, "</span>");
@@ -13352,6 +13367,11 @@ function showValidation(str) {
     setTimeout(() => {
       elem.classList.remove("active");
       elem.innerHTML = "";
+      let buttons = document.querySelectorAll(".form-options .btn");
+
+      for (let n = 0; n < buttons.length; n++) {
+        buttons[n].disabled = false;
+      }
     }, 2000);
   }
 } // send form
@@ -13359,7 +13379,7 @@ function showValidation(str) {
 
 function sendMail(i_name, i_phone, i_mail, i_btn) {
   const request = new XMLHttpRequest();
-  const url = "ajax_quest.php";
+  const url = "./mailsender/mailsend.php";
   request.open("POST", url, true);
   request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   request.addEventListener("readystatechange", () => {
@@ -13367,7 +13387,19 @@ function sendMail(i_name, i_phone, i_mail, i_btn) {
       console.log(request.responseText);
     }
   });
-  const params = "name=" + i_name + "&phone=" + i_phone + "&mail=" + i_mail + "&btn=" + i_btn;
+  let cook = makeRandStr();
+  document.cookie = "grttth=".concat(cook);
+
+  function makeRandStr() {
+    var text = "";
+    var possible = "abcdefghijklmnopqrstuvwxyz";
+
+    for (var i = 0; i < 10; i++) text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+  }
+
+  const params = "name=" + i_name + "&phone=" + i_phone + "&mail=" + i_mail + "&btn=" + i_btn + "&grttth=" + cook;
   request.send(params);
   document.querySelector(".i_name").value = "";
   document.querySelector(".i_phone").value = "";
