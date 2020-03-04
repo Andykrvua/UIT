@@ -226,6 +226,42 @@ function showValidation(str) {
   }
 }
 
+// send success
+function sendSuccess() {
+  let buttons = document.querySelectorAll(".form-options .btn");
+  for (let n = 0; n < buttons.length; n++) {
+    buttons[n].disabled = true;
+  }
+
+  let querylang = document.querySelector("html").getAttribute("lang");
+  let lang = true;
+
+  if (querylang === "ru") {
+    lang = false;
+  }
+
+  let successMessage;
+
+  lang
+    ? (successMessage = "Повідомлення успішно відправлено")
+    : (successMessage = "Сообщение успешно отправлено");
+
+  let elem = document.querySelector(".validate");
+
+  elem.innerHTML = successMessage;
+
+  elem.classList.add("active");
+  setTimeout(() => {
+    elem.classList.remove("active");
+    elem.innerHTML = "";
+
+    let buttons = document.querySelectorAll(".form-options .btn");
+    for (let n = 0; n < buttons.length; n++) {
+      buttons[n].disabled = false;
+    }
+  }, 2000);
+}
+
 // send form
 function sendMail(i_name, i_phone, i_mail, i_btn) {
   const request = new XMLHttpRequest();
@@ -237,7 +273,8 @@ function sendMail(i_name, i_phone, i_mail, i_btn) {
 
   request.addEventListener("readystatechange", () => {
     if (request.readyState === 4 && request.status === 200) {
-      console.log(request.responseText);
+      // console.log(request.responseText);
+      sendSuccess();
     }
   });
 
